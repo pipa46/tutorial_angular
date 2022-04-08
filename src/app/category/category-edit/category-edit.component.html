@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 *ngIf="categoria.id==null">Crear categoria</h1>
+    <h1 *ngIf="categoria.id==null">Modificar categoria</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="number" matInput placeholder="Identificador" [(ngModel)]="categoria.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput placeholder="Nombre de categoría" [(ngModel)]="categoria.name" name="name" required>
+            <mat-error>El nombre no puede estar vacío</mat-error>
+        </mat-form-field>
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="Cerrar()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="Guardar()">Guardar</button>
+    </div>
+</div>
+

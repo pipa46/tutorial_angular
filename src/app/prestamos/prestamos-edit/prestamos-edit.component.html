@@ -1,0 +1,57 @@
+<div class="container">
+    
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="number" matInput placeholder="Identificador" disabled >
+           
+        </mat-form-field>
+
+     
+
+        <mat-form-field>
+            <mat-label>Nombre del cliente</mat-label>
+            
+            <mat-select disableRipple  [(ngModel)]="prestamos.nombreCliente" name="nombreCliente" >
+                <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nombre}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre del juego</mat-label>
+            <mat-select disableRipple [(ngModel)]="prestamos.nombreJuego" name="nombreJuego" >
+                <mat-option *ngFor="let g of game" [value]="g">{{g.title}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+     </form>
+        <form [formGroup]="prestamosForm">
+        <mat-form-field>
+            <mat-label>Fecha de Inicio</mat-label>
+            <input type="text"  matInput formControlName="FechadeInicio" name="fecha de inicio">
+           
+        </mat-form-field>
+   
+       
+        <mat-form-field>
+            <mat-label>Fecha Fin</mat-label>
+            <input type="text"  matInput formControlName="FechaFin" name="fechaFin" >
+           <mat-error *ngIf="prestamosForm.invalid  ">
+              El prestamo no puede superar los 14 dias.
+              
+           </mat-error>
+        
+        </mat-form-field>
+        </form>
+    
+   
+        
+
+   
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cancelar</button>
+        <button mat-flat-button color="primary" [disabled]="prestamosForm.invalid "(click)="onSave()">Guardar</button>
+    </div>
+</div>
+
